@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <title>Term Bible</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.holoviz.org/panel/1.8.4/dist/images/apple-touch-icon.png">    <link rel="icon" href="./favicon.ico" type="">
+    <meta name="name" content="Term Bible">
+    <style>
+      html, body {
+	display: flow-root;
+        box-sizing: border-box;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/plotlyplot/maplibre-gl@4.4.1/dist/maplibre-gl.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/datatabulator/tabulator-tables@6.3.1/dist/css/tabulator_fast.min.css" type="text/css" />
+<script type="esms-options">{"shimMode": true}</script>
+
+<script type="text/javascript" src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/reactiveesm/es-module-shims@^1.10.0/dist/es-module-shims.min.js"></script>
+<script type="text/javascript" src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/plotlyplot/plotly-3.1.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/datatabulator/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/datatabulator/luxon/build/global/luxon.min.js"></script>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.8.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.8.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.8.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.8.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.holoviz.org/panel/1.8.4/dist/panel.min.js"></script>
+
+<script type="text/javascript">
+  Bokeh.set_log_level("info");
+</script>    <!-- Template CSS -->
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/css/loadingspinner.css">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/css/listpanel.css">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/css/markdown.css">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css?v=1.8.4">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/theme/default.css?v=1.8.4">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/fastbasetemplate/fast.css?v=1.8.4">
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/fastlisttemplate/fast_list_template.css?v=1.8.4">
+
+<style>
+  :root {
+    --background-color: #ffffff;
+    --body-font: Open Sans, sans-serif;
+    --corner-radius: 3;
+    --header-background: #969696;
+    --header-color: #ffffff;
+    --sidebar-width: 330px;
+    --right-sidebar-width:  330px;
+  }
+  body {
+    color: #2B2B2B;
+    background-color: var(--background-color);
+    font-family: var(--body-font);
+  }
+  #header a {
+    color: currentColor;
+  }
+  #header-design-provider {
+    --neutral-fill-hover: var(--header-background);
+    --neutral-fill-rest: var(--header-background);
+    --neutral-foreground-rest: var(--header-color);
+    --design-background-text-color: var(--header-color);
+    --design-background-color: var(--header-background);
+    background: var(--header-background);
+    color: var(--header-color);
+  }
+  #sidebar {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+  }
+  #right-sidebar {
+    min-width: var(--right-sidebar-width);
+    max-width: var(--right-sidebar-width);
+  }
+</style>
+
+    <style type="text/css">
+    
+:host(.pn-loading):before, .pn-loading:before {
+  background-color: #c3c3c3;
+  mask-size: auto calc(min(50%, 300px));
+  -webkit-mask-size: auto calc(min(50%, 300px));
+}
+    </style>
+
+    <!-- Template JS -->
+    <script src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/fastbasetemplate/fast_template.js"></script>
+    <script src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/@microsoft/fast-components@2.30.6/dist/fast-components.js" type="module"></script>
+    <script src="https://cdn.holoviz.org/panel/1.8.4/dist/bundled/fast/js/fast_design.js" type="module"></script>
+
+<!-- Fast Script -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', (event) => {
+  const header_design = new window.fastDesignProvider("#header-design-provider");
+  const body_design = window.bodyDesign = new window.fastDesignProvider("#body-design-provider");
+  body_design.setLuminance(1.0);
+  body_design.setAccentColor("#0072B5")
+  body_design.setNeutralColor("#000000");
+  header_design.setLuminance("0.23");
+  header_design.setAccentColor("#ffffff");
+  header_design.setNeutralColor("#0072B5");
+});
+</script>
+  </head>
+  <body>
+<fast-design-system-provider id="body-design-provider" use-defaults>
+  <div id="container">
+    <fast-design-system-provider id="header-design-provider">
+      <nav id="header" class="shadow" >
+	<div class="app-header">
+	  <a class="title" href="" >Term Bible</a>
+	</div>
+	<div id="header-items">
+	  <div id="b68a99f6-ab59-4a42-9479-2999249ee26d" data-root-id="p1117" style="display: contents;"></div>
+	</div>
+	<div class="pn-busy-container" id="busy-container">
+	  <div id="c4d4aad6-2853-4ed1-aa9a-3cc21ce5270f" data-root-id="p1025" style="display: contents;"></div>
+	</div>
+	<fast-tooltip anchor="busy-container" position="left">
+	  Busy Indicator
+	</fast-tooltip>
+      </nav>
+    </fast-design-system-provider>
+
+    <div class="row" id="content">
+
+      <div class="main" id="main">
+        <div class="card-margin stretch_width">
+	  <fast-card class="pn-wrapper">
+	    <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+	      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+		<path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/>
+	      </svg>
+	    </span>
+	    <div id="c8e836ad-9e66-4633-ab2f-3a67a0525a25" data-root-id="p1026" style="display: contents;"></div>
+	  </fast-card>
+	</div>
+      </div>
+      <fast-dialog id="pn-Modal" hidden>
+        <fast-button class="pn-modal-close" id="pn-closeModal">&times;</fast-button>
+        <div class="pn-modal-content">
+	</div>
+      </fast-dialog>
+    </div>
+  </div>
+</fast-design-system-provider>
+
+<script type="text/javascript">
+  
+</script>
+
+<script type="text/javascript">
+  function openNav() {
+    document.getElementById("sidebar").classList.remove("hidden");
+    document.getElementById("sidebar-button").onclick = closeNav;
+  }
+
+  function closeNav() {
+    document.getElementById("sidebar").classList.add("hidden");
+    document.getElementById("sidebar-button").onclick = openNav;
+  }
+
+  function openNavRight() {
+    document.getElementById("right-sidebar").classList.remove("hidden");
+    document.getElementById("right-sidebar-button").onclick = closeNavRight;
+  }
+
+  function closeNavRight() {
+    document.getElementById("right-sidebar").classList.add("hidden");
+    document.getElementById("right-sidebar-button").onclick = openNavRight;
+  }
+
+  var modal = document.getElementById("pn-Modal");
+  var span = document.getElementById("pn-closeModal");
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<div id="cdad23c7-7fae-438f-bc7d-22de5294b9de" data-root-id="p1018" style="display: contents;"></div>
+<div id="da238bb8-104b-4bc8-80f7-4f0b1cf90818" data-root-id="p1021" style="display: contents;"></div>
+<div id="ce61bec2-9e98-423b-8391-f24a99b83402" data-root-id="p1011" style="display: contents;"></div>
+<div id="fdf1b15e-74c4-4310-b131-298ef5357689" data-root-id="p1022" style="display: contents;"></div>
+
+
+  
+    <script type="application/json" id="e142008c-4f7d-4ebc-9778-dac37897ce83">
+      {"93975b7f-f403-4c2d-8511-33b27fb07e9c":{"version":"3.8.1","title":"Term Bible","config":{"type":"object","name":"DocumentConfig","id":"p1009","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1010"}}},"roots":[{"type":"object","name":"panel.models.location.Location","id":"p1011","attributes":{"name":"location","reload":false}},{"type":"object","name":"panel.models.markup.HTML","id":"p1018","attributes":{"name":"js_area","stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1123","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1120","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/bundled/theme/fast.css"}}],"width":0,"height":0,"margin":0,"sizing_mode":"fixed","align":"start","disable_math":true}},{"type":"object","name":"panel.models.reactive_html.ReactiveHTML","id":"p1021","attributes":{"name":"actions","subscribed_events":{"type":"set","entries":["dom_event"]},"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1124","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"id":"p1120"}],"margin":0,"align":"start","data":{"type":"object","name":"TemplateActions1","id":"p1019","attributes":{"name":"TemplateActions00135","tags":["__ref:p1021"]}},"scripts":{"type":"map","entries":[["open_modal",["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;block&amp;#x27;\nwindow.dispatchEvent(new Event(&amp;#x27;resize&amp;#x27;));"]],["close_modal",["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;none&amp;#x27;"]]]}}},{"type":"object","name":"panel.models.browser.BrowserInfo","id":"p1022","attributes":{"name":"browser_info"}},{"type":"object","name":"panel.models.markup.HTML","id":"p1025","attributes":{"name":"busy_indicator","css_classes":["loader","light"],"stylesheets":[":host { --loading-spinner-size: 20px; }","\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1125","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1126","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loadingspinner.css"}},{"id":"p1120"}],"min_width":20,"min_height":20,"margin":[5,10],"align":"start"}},{"type":"object","name":"panel.models.layout.Column","id":"p1026","attributes":{"name":"main-2926754361328","tags":["main"],"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1127","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1128","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/listpanel.css"}},{"id":"p1120"}],"min_width":0,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"panel.models.tabs.Tabs","id":"p1027","attributes":{"styles":{"type":"map","entries":[["background","#ffffff"]]},"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1129","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"id":"p1120"},"\n                :host { --panel-primary-color: #2f3640; }\n                .bk-tab { background-color: white !important; color: #2f3640 !important; border: none !important; padding: 10px 20px !important; }\n                .bk-tab.bk-active { background-color: #2f3640 !important; color: white !important; border-radius: 5px 5px 0 0 !important; }\n                .bk-tabs-header { background-color: white !important; }\n            "],"margin":0,"sizing_mode":"stretch_width","align":"start","tabs":[{"type":"object","name":"TabPanel","id":"p1112","attributes":{"name":"Column00122","title":"Term Bible","child":{"type":"object","name":"panel.models.layout.Column","id":"p1028","attributes":{"name":"Column00122","stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1130","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1131","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/listpanel.css"}},{"id":"p1120"}],"min_width":0,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"panel.models.markup.HTML","id":"p1031","attributes":{"css_classes":["markdown"],"styles":{"type":"map","entries":[["background","#969696"],["color","white"],["padding","10px 10px"],["margin","10px 0"],["border-radius","5px"]]},"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1132","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1133","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/markdown.css"}},{"id":"p1120"}],"min_width":0,"margin":[5,10],"sizing_mode":"stretch_width","align":"start","text":"&amp;lt;h2 id=&amp;quot;term-bible&amp;quot;&amp;gt;Term Bible &amp;lt;a class=&amp;quot;header-anchor&amp;quot; href=&amp;quot;#term-bible&amp;quot;&amp;gt;\u00b6&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;\n"}},{"type":"object","name":"Row","id":"p1032","attributes":{"name":"Row00121","stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1134","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1135","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/listpanel.css"}},{"id":"p1120"}],"min_width":0,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"panel.models.layout.Column","id":"p1033","attributes":{"name":"Column00120","stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1136","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1137","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/listpanel.css"}},{"id":"p1120"}],"margin":0,"align":"start","children":[{"type":"object","name":"panel.models.tabulator.DataTabulator","id":"p1105","attributes":{"subscribed_events":{"type":"set","entries":["table-edit","selection-change","cell-click"]},"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1139","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1140","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/bundled/font-awesome/css/all.min.css"}},{"id":"p1120"},{"type":"object","name":"ImportedStyleSheet","id":"p1138","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/bundled/datatabulator/tabulator-tables@6.3.1/dist/css/tabulator_fast.min.css"}}],"margin":[5,10],"align":"start","configuration":{"type":"map","entries":[["columnDefaults",{"type":"map","entries":[["hozAlign","center"],["headerHozAlign","center"]]}],["columns",[{"type":"map","entries":[["field","year"],["headerSort",false],["title",""]]},{"type":"map","entries":[["field","Jan"],["sorter","number"],["headerSort",false],["title","Jan"]]},{"type":"map","entries":[["field","Feb"],["sorter","number"],["headerSort",false],["title","Feb"]]},{"type":"map","entries":[["field","Mar"],["sorter","number"],["headerSort",false],["title","Mar"]]},{"type":"map","entries":[["field","Apr"],["sorter","number"],["headerSort",false],["title","Apr"]]},{"type":"map","entries":[["field","May"],["sorter","number"],["headerSort",false],["title","May"]]},{"type":"map","entries":[["field","Jun"],["sorter","number"],["headerSort",false],["title","Jun"]]},{"type":"map","entries":[["field","Jul"],["sorter","number"],["headerSort",false],["title","Jul"]]},{"type":"map","entries":[["field","Aug"],["sorter","number"],["headerSort",false],["title","Aug"]]},{"type":"map","entries":[["field","Sep"],["sorter","number"],["headerSort",false],["title","Sep"]]},{"type":"map","entries":[["field","Oct"],["sorter","number"],["headerSort",false],["title","Oct"]]},{"type":"map","entries":[["field","Nov"],["sorter","number"],["headerSort",false],["title","Nov"]]},{"type":"map","entries":[["field","Dec"],["sorter","number"],["headerSort",false],["title","Dec"]]}]],["selectable",true],["dataTree",false]]},"columns":[{"type":"object","name":"TableColumn","id":"p1039","attributes":{"field":"year","title":"year","width":65,"formatter":{"type":"object","name":"StringFormatter","id":"p1038","attributes":{"null_format":""}},"editor":{"type":"object","name":"StringEditor","id":"p1037"}}},{"type":"object","name":"TableColumn","id":"p1044","attributes":{"field":"Jan","title":"Jan","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1043","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1042"}}},{"type":"object","name":"TableColumn","id":"p1049","attributes":{"field":"Feb","title":"Feb","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1048","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1047"}}},{"type":"object","name":"TableColumn","id":"p1054","attributes":{"field":"Mar","title":"Mar","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1053","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1052"}}},{"type":"object","name":"TableColumn","id":"p1059","attributes":{"field":"Apr","title":"Apr","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1058","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1057"}}},{"type":"object","name":"TableColumn","id":"p1064","attributes":{"field":"May","title":"May","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1063","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1062"}}},{"type":"object","name":"TableColumn","id":"p1069","attributes":{"field":"Jun","title":"Jun","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1068","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1067"}}},{"type":"object","name":"TableColumn","id":"p1074","attributes":{"field":"Jul","title":"Jul","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1073","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1072"}}},{"type":"object","name":"TableColumn","id":"p1079","attributes":{"field":"Aug","title":"Aug","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1078","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1077"}}},{"type":"object","name":"TableColumn","id":"p1084","attributes":{"field":"Sep","title":"Sep","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1083","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1082"}}},{"type":"object","name":"TableColumn","id":"p1089","attributes":{"field":"Oct","title":"Oct","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1088","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1087"}}},{"type":"object","name":"TableColumn","id":"p1094","attributes":{"field":"Nov","title":"Nov","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1093","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1092"}}},{"type":"object","name":"TableColumn","id":"p1099","attributes":{"field":"Dec","title":"Dec","width":65,"formatter":{"type":"object","name":"NumberFormatter","id":"p1098","attributes":{"text_align":{"type":"value","value":"right"},"format":"0,0.0[00000]"}},"editor":{"type":"object","name":"NumberEditor","id":"p1097"}}}],"editable":false,"hidden_columns":["index"],"layout":"fit_data_table","source":{"type":"object","name":"ColumnDataSource","id":"p1102","attributes":{"selected":{"type":"object","name":"Selection","id":"p1103","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1104"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DiQ3AIAAEoLNqffefV0hIkuJntdn9HU6X2+P1Ae3O+b40AAAA"},"shape":[13],"dtype":"int32","order":"little"}],["year",{"type":"ndarray","array":["2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"shape":[13],"dtype":"object","order":"little"}],["Jan",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/8t9/nvlx0tcDoe/asT0HxJykGQJ49PdxO6gCeR91WBy8OJh0m4X43IQiLDccqKMz6HQluv64gIOh2nO3TnPf/+3l299HbhDjtVhT8lkCZYwQQcIn8tB+fbPuqw9nA6/gGTJZAEHAE8HKjVoAAAA"},"shape":[13],"dtype":"float64","order":"little"}],["Feb",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1tSYMt1fTGXQ+NU5+6c5+IOSQIRlltOsDnIRqVY3/f/b99/6KtGTD+bQ9wuTx4mbVaHDUUZE9/WsDowgME/++Pe5p2OD0QdSidLsIT1CTlcrXipZsjB7HBUAaTyt70iWIOAAwAc4Jc7aAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["Mar",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/6sWWef+sIrPgSWMT3fTXGGHOUcUNhRlsDnIt74O3CH3254BDNgd9pRMlmAJY3U4WbZvvpQ+u0PjVOfunOe/7cHKWlkcrla8VDPsEHa4qHT7Z10Wk4NTwtMLSre/2wf0Ts8TahZwAAAcfpHUaAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["Apr",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/4vb5cnDtFrA4cPyY97mnUIOSwpsua4vZnGoFlnn/rDqnz2f7qa575dzOAAFgTJsDmtkolKs77M4xIH0af+2BxLtYjdZHMDK3KQchJoPnFroyujgtu3z3ysVP+1twRq5HQBpKSyMaAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["May",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/9s3X0r/roqAQ3HGxLc19kIOfkkCEZZb2Bx6p+cJNR/4Z396oeu2z385HC77giTYHHbItb4O3MHiYMixRiYq5be9Fw+TdrsYu8NkCZYwPl0Fh07HhKcXlBgdFoCMZWN0OHgKZACHAwDFGCTlaAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["Jun",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC//uw/Ji3eSefg+6mue+Xuwk5fPl7peKlGpvDB7A4i0NA7/Q8oWZ2h0JbruuLC9gdJFnC+HQ3MTmAlB/z/mlfvm++lP5dTgfNmP5DX1fIObS+Dtwh18rocNk3SSDCksUhbpcnD5M2hwMAVh7IbmgAAAA="},"shape":[13],"dtype":"float64","order":"little"}],["Jul",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC//umEdN/6CuPw1GFDUUZggIOSwpsua4vZnN4/nvlx0u+bA6Pl84+orCB3eHTJd8kgQg2h2UgbhGTA0iXRsxve6CuiW9r+Bx2efIwabPLOrA1TnXuzmFx0L+rAmQyOJz/Hgw0gtMBAM3J5vFoAAAA"},"shape":[13],"dtype":"float64","order":"little"}],["Aug",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/wFoAJf/5dAi2/l+C0BU46WbxCAPQLTIdr6fGgZAhxbZzvdTBkA1XrpJDAIHQLByaJHtfAdAO99PjZduAUCJQWDl0CICQL6fGi/dJBBAUrgeheuRIUBEi2zn+6kEQK5H4XoUrv8/qMZLN4lBB0BOzfO0aAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["Sep",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3sTuEOu9TWPw56SyRIsYfwOnY4JTy8osTr0Ts8Taj7A7uCXJBBhuYXdQfn2z7qsPewOQSDlgSwOYOET/+wVNxRlTMwVcfgR/HjpbBd5h5Nl++ZL6bM6ZEx8W2NvyuQwA2TMKXYHAG8zvKhoAAAA"},"shape":[13],"dtype":"float64","order":"little"}],["Oct",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/zPkWCMTlcLr4MXDpN0uxufQ+jpwh1wrk0OK9X3/3unsDo1TnbtznrM5MIABl0PGxLc19qZMDmF8upvmvmdyUNxQBBQSdTAGgc1iDiDTrO+zO/Qf+qoR088INYfTAQBgrpS6aAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}],["Nov",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/zt4aqHrts88DmlgIODAEsanu2kug4Np3C5PHiYWB8UNRRkT37I7PKwSWeeeKOCwCKj67xUWhyUFtlzXF7M4rPp4yTdJQMShGij9sErUAaT7/XJWB/NOx4SnFxgchJoPAG3gcwAAqHy2dWgAAAA="},"shape":[13],"dtype":"float64","order":"little"}],["Dec",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/wFoAJf/ppvEILDyEEAQWDm0yHYLQDvfT42Xbv4/Di2yne+nDEAxCKwcWmQGQMP1KFyPwg9A+n5qvHSTAUDRItv5fmoEQPhT46WbxA1AwcqhRbbzFUAfhetRuB4EQFTjpZvEIAhA9P3UeOmmEUB+eH0paAAAAA=="},"shape":[13],"dtype":"float64","order":"little"}]]}}},"cell_styles":{"type":"map","entries":[["id","35ee46c313e74829adad30a425202fa2"],["data",{"type":"map","entries":[[0,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","white"],["color","black"],["font-weight","bold"]]],[4,[["background-color","#65BA69"],["color","black"],["font-weight","bold"]]],[5,[["background-color","#60B464"],["color","black"],["font-weight","bold"]]],[6,[["background-color","#62B666"],["color","black"],["font-weight","bold"]]],[7,[["background-color","#65BA69"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#5FB263"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[1,{"type":"map","entries":[[2,[["background-color","#58AA5C"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#459249"],["color","black"],["font-weight","bold"]]],[4,[["background-color","#55A659"],["color","black"],["font-weight","bold"]]],[5,[["background-color","#59AB5D"],["color","black"],["font-weight","bold"]]],[6,[["background-color","#5AAC5E"],["color","black"],["font-weight","bold"]]],[7,[["background-color","#5AAC5E"],["color","black"],["font-weight","bold"]]],[8,[["background-color","#62B766"],["color","black"],["font-weight","bold"]]],[9,[["background-color","#64B968"],["color","black"],["font-weight","bold"]]],[10,[["background-color","#64B868"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#61B565"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[2,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","white"],["color","black"],["font-weight","bold"]]],[4,[["background-color","white"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","#E34745"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#D63B39"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#CD3130"],["color","white"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[3,{"type":"map","entries":[[2,[["background-color","#E14543"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#D03433"],["color","white"],["font-weight","bold"]]],[4,[["background-color","#C22626"],["color","white"],["font-weight","bold"]]],[5,[["background-color","#CD3230"],["color","white"],["font-weight","bold"]]],[6,[["background-color","#CE3231"],["color","white"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#ED514E"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[4,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","white"],["color","black"],["font-weight","bold"]]],[4,[["background-color","white"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[5,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","white"],["color","black"],["font-weight","bold"]]],[4,[["background-color","white"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#61B565"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#63B767"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[6,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","white"],["color","black"],["font-weight","bold"]]],[4,[["background-color","white"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","#E44946"],["color","black"],["font-weight","bold"]]],[8,[["background-color","#E34744"],["color","black"],["font-weight","bold"]]],[9,[["background-color","#DC403E"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","#E14543"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#DD413F"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[7,{"type":"map","entries":[[2,[["background-color","#D23735"],["color","white"],["font-weight","bold"]]],[3,[["background-color","#CB302F"],["color","white"],["font-weight","bold"]]],[4,[["background-color","#C42928"],["color","white"],["font-weight","bold"]]],[5,[["background-color","#C22726"],["color","white"],["font-weight","bold"]]],[6,[["background-color","#C22727"],["color","white"],["font-weight","bold"]]],[7,[["background-color","#BB2020"],["color","white"],["font-weight","bold"]]],[8,[["background-color","#C22727"],["color","white"],["font-weight","bold"]]],[9,[["background-color","#E14543"],["color","black"],["font-weight","bold"]]],[10,[["background-color","#CE3331"],["color","white"],["font-weight","bold"]]],[11,[["background-color","#E64A48"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[8,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#4C9B51"],["color","black"],["font-weight","bold"]]],[4,[["background-color","white"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","#65BA69"],["color","black"],["font-weight","bold"]]],[9,[["background-color","#62B666"],["color","black"],["font-weight","bold"]]],[10,[["background-color","#52A256"],["color","black"],["font-weight","bold"]]],[11,[["background-color","#4C9B51"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#53A458"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[9,{"type":"map","entries":[[2,[["background-color","#5EB162"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#59AB5D"],["color","black"],["font-weight","bold"]]],[4,[["background-color","#55A65A"],["color","black"],["font-weight","bold"]]],[5,[["background-color","#3C8740"],["color","white"],["font-weight","bold"]]],[6,[["background-color","#256B2A"],["color","white"],["font-weight","bold"]]],[7,[["background-color","#2B7230"],["color","white"],["font-weight","bold"]]],[8,[["background-color","#327A36"],["color","white"],["font-weight","bold"]]],[9,[["background-color","#1B5E20"],["color","white"],["font-weight","bold"]]],[10,[["background-color","#29702E"],["color","white"],["font-weight","bold"]]],[11,[["background-color","#49984E"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#4E9D52"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#4C9B51"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[10,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#E74B48"],["color","black"],["font-weight","bold"]]],[4,[["background-color","#E24744"],["color","black"],["font-weight","bold"]]],[5,[["background-color","#DB3F3D"],["color","black"],["font-weight","bold"]]],[6,[["background-color","#DA3E3C"],["color","black"],["font-weight","bold"]]],[7,[["background-color","#DC413F"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#EE524F"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[11,{"type":"map","entries":[[2,[["background-color","white"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#C32827"],["color","white"],["font-weight","bold"]]],[4,[["background-color","#B71C1C"],["color","white"],["font-weight","bold"]]],[5,[["background-color","#BC2121"],["color","white"],["font-weight","bold"]]],[6,[["background-color","#D93D3C"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","#D63A39"],["color","black"],["font-weight","bold"]]],[9,[["background-color","#D13634"],["color","white"],["font-weight","bold"]]],[10,[["background-color","#E14543"],["color","black"],["font-weight","bold"]]],[11,[["background-color","#DD413F"],["color","black"],["font-weight","bold"]]],[12,[["background-color","#D83C3A"],["color","black"],["font-weight","bold"]]],[13,[["background-color","white"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}],[12,{"type":"map","entries":[[2,[["background-color","#60B465"],["color","black"],["font-weight","bold"]]],[3,[["background-color","#5FB363"],["color","black"],["font-weight","bold"]]],[4,[["background-color","#61B565"],["color","black"],["font-weight","bold"]]],[5,[["background-color","white"],["color","black"],["font-weight","bold"]]],[6,[["background-color","white"],["color","black"],["font-weight","bold"]]],[7,[["background-color","white"],["color","black"],["font-weight","bold"]]],[8,[["background-color","white"],["color","black"],["font-weight","bold"]]],[9,[["background-color","white"],["color","black"],["font-weight","bold"]]],[10,[["background-color","white"],["color","black"],["font-weight","bold"]]],[11,[["background-color","white"],["color","black"],["font-weight","bold"]]],[12,[["background-color","white"],["color","black"],["font-weight","bold"]]],[13,[["background-color","#5CAF61"],["color","black"],["font-weight","bold"]]],[1,[["font-weight","bold"]]]]}]]}]]},"page":1,"select_mode":true,"selectable_rows":null}}]}}]}}]}}}}]}}]}},{"type":"object","name":"panel.models.markup.HTML","id":"p1117","attributes":{"name":"header-2926755056672","tags":["header"],"styles":{"type":"map","entries":[["margin-left","auto"]]},"stylesheets":["\n:host(.pn-loading):before, .pn-loading:before {\n  background-color: #c3c3c3;\n  mask-size: auto calc(min(50%, 300px));\n  -webkit-mask-size: auto calc(min(50%, 300px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1141","attributes":{"url":"https://cdn.holoviz.org/panel/1.8.4/dist/css/loading.css"}},{"id":"p1120"}],"width":200,"height":50,"margin":[5,10],"sizing_mode":"fixed","align":"start","text":"&amp;lt;img src=&amp;quot;https://heliosctaslackstorage.blob.core.windows.net/heliosctaslackstorage/helios_logo_dark.png&amp;quot;  style=&amp;quot;max-width: 100%; max-height: 100%; object-fit: contain; width: 200px; height: 50px;&amp;quot;&amp;gt;&amp;lt;/img&amp;gt;"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"start","kind":"Any","default":0},{"name":"end","kind":"Any","default":100},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"ReactiveESM1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"JSComponent1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"ReactComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"AnyWidgetComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"max_notifications","kind":"Any","default":5},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_rendered","kind":"Any","default":false},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"request_value1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"_synced","kind":"Any","default":null},{"name":"_request_sync","kind":"Any","default":0}]}]}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('e142008c-4f7d-4ebc-9778-dac37897ce83').textContent;
+              const render_items = [{"docid":"93975b7f-f403-4c2d-8511-33b27fb07e9c","roots":{"p1011":"ce61bec2-9e98-423b-8391-f24a99b83402","p1018":"cdad23c7-7fae-438f-bc7d-22de5294b9de","p1021":"da238bb8-104b-4bc8-80f7-4f0b1cf90818","p1022":"fdf1b15e-74c4-4310-b131-298ef5357689","p1025":"c4d4aad6-2853-4ed1-aa9a-3cc21ce5270f","p1026":"c8e836ad-9e66-4633-ab2f-3a67a0525a25","p1117":"b68a99f6-ab59-4a42-9479-2999249ee26d"},"root_ids":["p1011","p1018","p1021","p1022","p1025","p1026","p1117"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+      else document.addEventListener("DOMContentLoaded", fn, {once: true});
+      })();
+    </script>
+  </body>
+</html>

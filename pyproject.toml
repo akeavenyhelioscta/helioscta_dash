@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "helioscta_dash"
+version = "0.1.0"
+description = "Python library for Helios CTA"
+authors = ["Your Name <your.email@example.com>"]
+exclude = ["*.logs", "*.png", "*.csv", "*.xlsx", "*.xlsm"]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

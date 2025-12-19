@@ -1,0 +1,42 @@
+# db
+psycopg2-binary==2.9.10
+pyodbc
+
+# ipython
+ipython
+jupyter 
+notebook
+
+# python
+poetry==1.8.4
+python-dotenv==1.0.1
+numpy==2.0.2
+pandas==2.2.3
+pyarrow
+tabulate
+plotly
+kaleido
+scikit-learn
+matplotlib
+panel
+pyyaml
+
+# prefect
+prefect>=3.0.0
+# pendulum>=3.0.0
+
+# dash
+dash
+gunicorn
+
+# excel
+openpyxl
+
+# azure 
+azure-storage-blob
+
+# tableau
+tableauserverclient
+
+# slack
+slack_sdk
