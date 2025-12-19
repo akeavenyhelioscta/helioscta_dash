@@ -1,0 +1,29 @@
+# Environment files
+.env
+.env.*
+*.env
+.env.local
+.env.*.local
+
+# Dagster directories
+.archive/*
+
+# Python build/dist directories
+dist/*
+
+# Python cache files
+__pycache__/
+**/__pycache__/*
+*.py[cod]
+*$py.class
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# misc files
+*.pdf
+*.csv
+*.xlsx
